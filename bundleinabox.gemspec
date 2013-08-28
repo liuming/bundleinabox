@@ -7,9 +7,9 @@ Gem::Specification.new do |spec|
   spec.name          = "bundleinabox"
   spec.version       = Bundleinabox::VERSION
   spec.authors       = ["Ming Liu"]
-  spec.email         = ["TODO: Write your email address"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.email         = ["liuming@lmws.net"]
+  spec.description   = %q{}
+  spec.summary       = %q{bundle gems into geminabox}
   spec.homepage      = ""
   spec.license       = "MIT"
 
