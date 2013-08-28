@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+ENV["THOR_DEBUG"] = "1" # Force Thor to raise exceptions so we can exit non-zero.
+
+# Exit cleanly from an early interrupt
+Signal.trap("INT") { exit 1 }
+
+require 'fileutils'
+require 'bundler'
+require 'bundler/cli'
+require 'bundler/friendly_errors'
+require 'geminabox'
+require 'geminabox_client'
+require 'rubygems/commands/inabox_command'
+
+FileUtils.mkdir_p 'vendor/cache'
+
+Bundler.with_friendly_errors { Bundler::CLI.start }
+
+Gem::Commands::InaboxCommand.new.send_gems(Dir.foreach('vendor/cache').reject{|f| !f.match(/\.gem$/)}.map{|f| "vendor/cache/#{f}"})
