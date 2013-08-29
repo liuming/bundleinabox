@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["liuming@lmws.net"]
   spec.description   = %q{}
   spec.summary       = %q{bundle gems into geminabox}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/liuming/bundleinabox"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)

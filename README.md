@@ -1,6 +1,6 @@
 # Bundleinabox
 
-TODO: Write a gem description
+bundle gems into geminabox
 
 ## Installation
 
@@ -18,7 +18,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    cd PROJECT_USING_BUNLDER
+    bundleinabox
+
 
 ## Contributing
 
