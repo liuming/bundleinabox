@@ -1,15 +1,11 @@
 #!/usr/bin/env ruby
 $:.push(File.expand_path(File.dirname(__FILE__) + '/../lib'))
-
 require 'bundleinabox'
 
 Signal.trap("INT") { exit 1 } # Exit cleanly from an early interrupt
-
-FileUtils.mkdir_p 'vendor/cache' # create vendor/cache for bundler
-
 ENV["THOR_DEBUG"] = "1" # Force Thor to raise exceptions so we can exit non-zero.
 
-Bundler.with_friendly_errors { Bundler::CLI.start } # run bundler
-
+# run bundler package
+Bundler.with_friendly_errors { Bundler::CLI.start(['package']) }
 # upload gems to geminabox
 Gem::Commands::InaboxCommand.new.send_gems(Dir.foreach('vendor/cache').reject{|f| !f.match(/\.gem$/)}.map{|f| "vendor/cache/#{f}"})
