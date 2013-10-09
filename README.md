@@ -1,6 +1,7 @@
 # Bundleinabox
 
-bundle gems into geminabox
+Cache .gem files with bundler and push them up to a rubygems server with geminabox
+
 
 ## Installation
 
@@ -18,8 +19,17 @@ Or install it yourself as:
 
 ## Usage
 
-    cd PROJECT_USING_BUNLDER
+First point geminabox to your own rubygems server. This is a one time setup.
+
+    bundleinabox host YOUR_RUBYGEMS_SERVER
+
+Then inside any project using Bundler (with Gemfile), you can push the gems to your rubygems server
+
     bundleinabox
+
+## Note
+
+Currently it only support .gem files and does not support git checkout repo.
 
 
 ## Contributing

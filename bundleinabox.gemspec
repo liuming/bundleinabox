@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Bundleinabox::VERSION
   spec.authors       = ["Ming Liu"]
   spec.email         = ["liuming@lmws.net"]
-  spec.description   = %q{Cache .gem files with bundler and push them up to a gem server with geminabox}
+  spec.description   = %q{Cache .gem files with bundler and push them up to a rubygems server with geminabox}
   spec.summary       = spec.description
   spec.homepage      = "https://github.com/liuming/bundleinabox"
   spec.license       = "MIT"
