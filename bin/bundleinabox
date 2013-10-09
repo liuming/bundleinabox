@@ -1,11 +1,23 @@
 #!/usr/bin/env ruby
-$:.push(File.expand_path(File.dirname(__FILE__) + '/../lib'))
-require 'bundleinabox'
+
+require 'thor'
+require_relative '../lib/bundleinabox'
 
 Signal.trap("INT") { exit 1 } # Exit cleanly from an early interrupt
 ENV["THOR_DEBUG"] = "1" # Force Thor to raise exceptions so we can exit non-zero.
 
-# run bundler package
-Bundler.with_friendly_errors { Bundler::CLI.start(['package']) }
-# upload gems to geminabox
-Gem::Commands::InaboxCommand.new.send_gems(Dir.foreach('vendor/cache').reject{|f| !f.match(/\.gem$/)}.map{|f| "vendor/cache/#{f}"})
+class BundleinaboxCommands < Thor
+  default_task :sync
+
+  desc "sync", "sync the gems from current project to gem server"
+  def sync
+    Bundleinabox.sync
+  end
+
+  desc "host http://localhost:8080", "set the host for geminabox"
+  def host(host)
+    Bundleinabox.host(host)
+  end
+end
+
+BundleinaboxCommands.start(ARGV)
